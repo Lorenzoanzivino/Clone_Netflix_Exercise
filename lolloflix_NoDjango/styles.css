@@ -1,0 +1,312 @@
+
+/* Stili condivisi */
+body {
+    margin: 0; /* elimina tutti i margini */
+    color: white; /* colore testo */
+    font-family: 'arial'; /* cambio di carattere */
+    background-color: black;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* elimina scrollbar */
+}
+
+#logo {
+    height: 75px; /* Default per prima pagina */
+}
+
+/* Stili specifici per la prima pagina */
+body.index-page #logo {
+    height: 80px; /* Logo specifico per index.html */
+}
+
+/* ombra nera sfumata a destra dell' Index */
+body.index-page #preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 0;
+    background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0)); /* Sfumatura da nero pieno a trasparente */
+}
+
+/* Immagine di sfondo con movimento */
+body.index-page #index-container {
+    position: fixed; /* Rende l'immagine fissa rispetto alla finestra */
+    top: 0;
+    left: 0;
+    width: 100%; /* L'immagine copre l'intera larghezza della finestra */
+    height: 100%; /* L'immagine copre l'intera altezza della finestra */
+    z-index: -1; /* Va sotto tutti gli altri elementi */
+    overflow: hidden; /* Assicura che l'immagine non esca dal contenitore */
+}
+
+body.index-page #index-container img {
+    width: 100%; /* L'immagine si adatta alla larghezza del contenitore */
+    height: 100%; /* L'immagine si adatta all'altezza del contenitore */
+    object-fit: cover; /* Assicura che l'immagine copra il contenitore senza distorsioni */
+    opacity: 0; /* Inizialmente trasparente */
+    animation: fadeIn 1s ease-in-out forwards, moveRight 20s linear infinite;
+}
+
+/* Animazione per il fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animazione per il movimento a destra */
+@keyframes moveRight {
+    from {
+        transform: translateX(0); /* Posizione iniziale */
+    }
+    to {
+        transform: translateX(2%); /* Si muove verso destra */
+    }
+}
+
+/* Testi sopra il video - 1VW corrisponde al 1% della larghezza del viewport */ 
+body.index-page #preview-details { 
+    position: fixed;
+    top: 20%; /* Valore fisso */
+    left: 100px; /* Valore fisso */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    z-index: 9;
+}
+/* VW = ( PX / larghezza viewport ) * 100 */
+body.index-page #preview-details h3 { /* scegli un profilo */
+    font-size: 1.2vw; /* Font scalabile */
+    margin: 0;
+}
+
+body.index-page #preview-details button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 8vw; /* Larghezza scalabile */
+    height: 8vw; /* Altezza scalabile */
+    cursor: pointer;
+    border: 0.15vw solid white; /* Bordo scalabile */
+    box-sizing: border-box;
+    transition: transform 0.2s ease;
+}
+
+body.index-page #preview-details button img { 
+    height: 95%; /* Immagine proporzionale al contenitore */
+}
+
+body.index-page #preview-details button .fa-plus {
+    font-size: 1.5vw; /* Icona scalabile */
+    color: white;
+}
+
+body.index-page #preview-details button:hover {
+    background-color: rgba(255, 255, 255, 0.593);
+    cursor: pointer;
+    transform: scale(1.15); /* Mantiene l'effetto hover */
+}
+
+body.index-page #preview-details button:hover i.fa-plus {
+    color: black;
+}
+
+body.index-page #pen-button {
+    display: none;
+    background-color: transparent;
+    width: 3vw; /* Scalabile */
+    height: 4vw; /* Scalabile */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3vw; /* Font scalabile */
+    z-index: 100;
+    position: absolute;
+}
+
+body.index-page #pen-button:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+
+
+/* Media query per migliorare la scalabilità su schermi più piccoli */
+@media (max-width: 768px) {
+    body.index-page #preview-details {
+        top: 15%; /* Sposta il contenitore più in alto */
+        left: 5vw; /* Più vicino al bordo */
+        gap: 5vh; /* Spazio proporzionale */
+    }
+
+    body.index-page #preview-details button {
+        width: 12vw; /* Bottoni più grandi su schermi piccoli */
+        height: 12vw;
+        border: 0.2vw solid white;
+    }
+
+    body.index-page #preview-details h3 {
+        font-size: 2.5vw; /* Testo più leggibile */
+    }
+
+    body.index-page #preview-details button .fa-plus {
+        font-size: 2vw; /* Icona più grande */
+    }
+}
+
+/* Titolo del film in basso a destra */
+#film-title {
+    position: fixed; /* Assicurati che abbia una posizione visibile */
+    top: 80%; /* Controlla se l'elemento è visibile nella parte superiore */
+    left: 80%; /* Posizionamento orizzontale */
+    z-index: 12; /* Assicurati che non sia nascosto dietro altri elementi */
+}
+
+#film-title img {
+    width: auto; /* Verifica che l'immagine non sia troppo grande per la visualizzazione */
+}
+
+#film-title h5 {
+    font-size: 18px;
+    color: white;
+}
+
+body.index-page h2 {
+    margin-left: 83%;
+    margin-top: 90%;
+    width: 3vw; /* Scalabile */
+    height: 4vw; /* Scalabile */
+    color: white; 
+    font-size: 1.3vw; /* Font scalabile */
+    position: absolute;
+}
+
+
+
+
+/* Stili specifici per la seconda pagina */
+body.home-page #logo {
+    height: 55px; /* Logo specifico per home.html */
+}
+
+body.home-page #navbar {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding: 10px 50px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+body.home-page #navlinks {
+    display: flex;
+}
+
+body.home-page #navlinks li {
+    font-size: 16px;
+    list-style: none;
+    margin-left: 25px;
+}
+#navlinks a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: white; /* Imposta il colore del testo su bianco */
+}
+
+#navlinks a:hover {
+    color: #ccc; /* Cambia il colore al passaggio del mouse */
+}
+
+#preview-container {
+    position: relative;
+}
+
+#preview-container video {
+    width: 100%;
+    z-index: 1;
+}
+
+#preview-overlay { /* Ombra opaca davanti il video per scurirlo */
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 90%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    z-index: 0;
+}
+
+body.home-page #preview-details {
+    position: absolute;
+    width: 30%;
+    top: 35%;
+    left: 60px;
+    z-index: 5;
+}
+
+body.home-page #preview-details h3 {
+    font-size: 65px;
+    margin: 15px 0;
+}
+
+body.home-page .horizontal-list {
+    display: flex; /* Dispone gli elementi in fila */
+    padding: 18px; /* Rimuove il padding predefinito */
+    margin: 0; /* Rimuove il margine predefinito */
+    gap: 30px; /* Spaziatura tra gli elementi */
+}
+
+.horizontal-list li {
+    font-size: 18px;
+}
+
+body.home-page #preview-details button {
+    height: 50px;
+    background-color: rgba(50, 50, 50, 0.4);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    font-size: 19px;
+}
+
+body.home-page #preview-details button:hover {
+    background-color: white;
+    color: black;
+}
+
+body.home-page .category {
+    width: 100%;
+    padding: 10px 0;
+    white-space: nowrap; /* Impedisce che gli elementi vadano a capo */
+    overflow-x: auto; /* Aggiunge lo scroll orizzontale */
+    
+}
+
+body.home-page .category img {
+    height: 250px; /* Larghezza delle immagini */
+    width: calc(250px * 3 / 4); /* Mantiene il rapporto 16:9 */
+    object-fit: cover; /* Adatta le immagini alla dimensione specificata */
+    margin-right: 10px; /* Spaziatura tra le immagini */
+    
+}
+
+body.home-page .category::-webkit-scrollbar {
+    display: none; /* Nasconde la scrollbar su Chrome/Safari */
+}
+
+body.home-page #categories {
+    padding: 0 50px;
+}

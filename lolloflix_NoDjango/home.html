@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lolloflix</title>
+    <link rel="stylesheet" href="styles.css"> <!-- collegamento a css -->
+    <script src="https://kit.fontawesome.com/06a651c8da.js"></script>
+</head>
+
+<body class="home-page">
+    <div id="navbar">  <!-- DIV: contenitore, ID: selettore: modifico solo quello selezionato -->
+        <img id="logo" src="thumbnails/logo.png" alt="Logo" onclick="window.location.href='index.html'">
+        <ul id="navlinks">
+            <li><a href="">Cerca</a></li>
+            <li><a href="#preview-container">Home</a></li>
+            <li><a href="">Nuovi</a></li>
+            <li><a href="#categories">Serie TV</a></li>
+            <li><a href="#categories">Film</a></li>
+            <li><a href="">Categorie</a></li>
+            <li><a href="">La mia lista</a></li>
+        </ul>
+    </div>
+    <div id="preview-container">
+        <video autoplay muted>  <!-- inserire video autoplay e mutato -->
+            <source src="thumbnails/trailer.mp4">
+        </video>  
+        <div id="preview-overlay"> <!-- ombra scura davnti il video -->
+            <div id="preview-details">  <!-- contenitore testi davanti video -->
+                <h3>Interstellar</h3>
+                <p>Quando l'umanità rischia l'estinzione, viene scoperto
+                    un misterioso strappo nel continuum spazio-temporale che
+                    offre all'umanità l'opportunità di ampliare la propria durata di vita.
+                    Un gruppo di esploratori deve...
+                </p>
+                <ul class="horizontal-list">
+                    <li>Fantascienza</li>
+                    <li>Suspanse</li>
+                    <li>Drammatico</li>
+                </ul>                
+                <button><i class="fas fa-play"> Guarda</i></button>
+                <button><i class="fas fa-volume-mute"></i></button>
+            </div>
+        </div>
+    </div>
+    <div id="categories">
+            <div class="category">
+                <h3>Azione & Avventura</h3>
+                <img src="thumbnails/azione/lost.jpg">
+                <img src="thumbnails/azione/mad-max.jpg">
+                <img src="thumbnails/azione/need-for-speed.jpg">
+                <img src="thumbnails/azione/dune-pt1.jpg">
+                <img src="thumbnails/azione/dune-pt2.jpg">
+                <img src="thumbnails/azione/john-wick-1.jpg">
+                <img src="thumbnails/azione/john-wick-2.jpg">
+                <img src="thumbnails/azione/john-wick-3.jpg">
+                <img src="thumbnails/azione/john-wick-4.jpg">
+            </div>
+            <div class="category">
+                <h3>Commedie</h3>
+                <img src="thumbnails/commedia/castaway-on-the-moon.jpg">
+                <img src="thumbnails/commedia/perfetti-sconosciuti.jpg">
+                <img src="thumbnails/commedia/naked-gun.jpg">
+                <img src="thumbnails/commedia/hangover.jpg">
+                <img src="thumbnails/commedia/hangover2.jpg">
+                <img src="thumbnails/commedia/hangover3.jpg">
+                <img src="thumbnails/commedia/smetto-quando-voglio.jpg">
+                <img src="thumbnails/commedia/smetto-quando-voglio2.jpg">
+                <img src="thumbnails/commedia/smetto-quando-voglio3.jpg">
+            </div>
+            <div class="category">
+                <h3>Drammatici</h3>
+                <img src="thumbnails/drammatico/breaking-bad.jpg">
+                <img src="thumbnails/drammatico/fight-club.jpg">
+                <img src="thumbnails/drammatico/three-iron.jpg">
+                <img src="thumbnails/drammatico/interstellar.jpg">
+                <img src="thumbnails/drammatico/joker.jpg">
+                <img src="thumbnails/drammatico/joker2.png">
+                <img src="thumbnails/drammatico/sand-castle.jpg">
+                <img src="thumbnails/drammatico/sulla-mia-pelle.jpg">
+                <img src="thumbnails/drammatico/the-big-lebowski.jpg">
+            </div>
+                      
+            </div>
+    </div>
+    <!-- inizio di utilizzo di JS -->
+    <script src="script.js" defer></script>
+</body>
+</html>
